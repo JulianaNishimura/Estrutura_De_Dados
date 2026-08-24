@@ -45,6 +45,6 @@ int main(int argc, char const *argv[]){
     printf("Caso 4: %d\n", verificaOrdenacao(vet4, 4));
     printf("Caso 5: %d\n", verificaOrdenacao(vet5, 5));
     printf("Caso 6: %d\n", verificaOrdenacao(vet6, 5));
-    printf("Caso 6: %d\n", verificaOrdenacao(vet7, 5));
-    printf("Caso 6: %d\n", verificaOrdenacao(vet8, 5));
+    printf("Caso 7: %d\n", verificaOrdenacao(vet7, 5));
+    printf("Caso 8: %d\n", verificaOrdenacao(vet8, 5));
 }

@@ -19,6 +19,6 @@ int somaFatoriais(int nro){
 }
 
 int main(int argc, char const *argv[]){
-    printf("%d",somaFatoriais(10));
-    printf("%d",somaFatoriais(4));
+    printf("%d\n",somaFatoriais(10));
+    printf("%d\n",somaFatoriais(4));
 }

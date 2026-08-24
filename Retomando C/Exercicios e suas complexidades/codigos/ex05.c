@@ -11,7 +11,7 @@ int fatorial(int nro){
 }
 
 int main(int argc, char const *argv[]){
-    printf("%d",fatorial(4));
-    printf("%d",fatorial(7));
+    printf("%d\n",fatorial(4));
+    printf("%d\n",fatorial(7));
     printf("%d",fatorial(5));
 }
