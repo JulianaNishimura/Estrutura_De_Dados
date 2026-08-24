@@ -1,4 +1,8 @@
-/*Indique o(s) ponto(s) forte(s) e fraco(s) de uma lista ordenada, justificando-os.
+/*
+Juliana Yumi Nishimura
+
+
+Indique o(s) ponto(s) forte(s) e fraco(s) de uma lista ordenada, justificando-os.
 Descreva a estratégia utilizada para o aumento de memória quando o usuário deseja inserir mais itens que o alocado previamente
 */
 #include <stdio.h>
