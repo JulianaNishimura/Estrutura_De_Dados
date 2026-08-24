@@ -20,13 +20,14 @@ int is_empty(t_ordered_list*list){
 }
 
 int increase_list(t_ordered_list*list){
-    list->max = list->max+list->max/2;
+    list->max = list->max+(list->max/3);
     list->itens = realloc(list->itens,list->max*sizeof(int));
     return 1;
 }
 
 int insert(t_ordered_list*list, int element){
-    if(size(list)==list->max) increase_list(list);
+    if(size(list)==list->max)
+        increase_list(list);
 
     if(is_empty(list)){
         list->itens[0] = element;
@@ -35,11 +36,11 @@ int insert(t_ordered_list*list, int element){
     }
 
     int i = 0;
-    while(list->itens[i]<=element || i < list->n){
+    while(i < list->n && list->itens[i] <= element){
         i++;
     }
 
-    for(int j = list->n;j<i;j--){
+    for(int j = list->n; j > i; j--){
         list->itens[j] = list->itens[j-1];
     }
 
@@ -47,6 +48,7 @@ int insert(t_ordered_list*list, int element){
     list->n++;
     return 1;
 }
+
 
 int remove_by_index(t_ordered_list*list, int index){
     if(index>=list->n) return 0;
@@ -72,12 +74,16 @@ int remove_by_element(t_ordered_list*list, int element){
 int index_of(t_ordered_list*list, int element){
     int ini = 0;
     int fim = list->n-1;
+    int meio;
 
     while(ini<=fim){
-        int meio = fim/2;
-        if(element==list->itens[meio]) return meio;
-        if(element>list->itens[meio]) ini = meio+1;
-        if(element<list->itens[meio]) fim = meio-1;
+        meio = ini + (fim-ini)/2;
+        if(element==list->itens[meio]) 
+            return meio;
+        if(element>list->itens[meio]) 
+            ini = meio+1;
+        if(element<list->itens[meio]) 
+            fim = meio-1;
     }
 
     return -1;
@@ -94,11 +100,16 @@ int get(t_ordered_list*list,int index){
 }
 
 int count(t_ordered_list*list,int element){
-    
+    int quantidade = 0;
+    for(int i = 0; i < list->n;i++){
+        if(list->itens[i]==element)
+            quantidade++;
+    }
+    return quantidade;
 }
 
 t_ordered_list* merge(t_ordered_list*list1, t_ordered_list*list2){
-    t_ordered_list*result_list = create_List(list1->max+list2->max);
+    t_ordered_list*result_list = create_list(list1->max+list2->max);
     int i = 0;
     int j = 0;
     int x = 0;
@@ -114,6 +125,18 @@ t_ordered_list* merge(t_ordered_list*list1, t_ordered_list*list2){
     }
 }
 
+int equals(t_ordered_list*list1, t_ordered_list*list2){
+    int i;
+    if(list1->n!=list2->n)
+        return 0;
+    for(int i = 0; i < list1->n;i++){
+        if(list1->itens[i]!=list2->itens[i]){
+            return 0;
+        }
+    }
+    return 1;
+}
+
 int clear(t_ordered_list*list){
     list->n=0;
     return 1;
@@ -124,6 +147,9 @@ int destroy(t_ordered_list*list){
     return 1;
 }
 
-
-
-//search retorna so se achou e index of retorna o indice
+void imprime_lista(t_ordered_list*list){
+    for(int i = 0; i < list->n; i++){
+        printf("%d ", list->itens[i]);
+    }
+    printf("\n");
+}
