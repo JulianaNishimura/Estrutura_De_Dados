@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 
-int repeteLetra(char str1[]){
+int repete_letra(char str1[]){
     int quantidadeLetra;
     for(int i = 0; i < strlen(str1);i++){
         quantidadeLetra = 1;
@@ -14,6 +14,20 @@ int repeteLetra(char str1[]){
             return 0;
         }
     }
+    return 1;
+}
+
+int repete_letra_vetor(char str1[]) {
+    int quantidade[256] = {0};
+
+    for (int i = 0; str1[i] != '\0'; i++) {
+        quantidade[(unsigned char)str1[i]]++;
+
+        if (quantidade[(unsigned char)str1[i]] > 1) {
+            return 0;
+        }
+    }
+
     return 1;
 }
 

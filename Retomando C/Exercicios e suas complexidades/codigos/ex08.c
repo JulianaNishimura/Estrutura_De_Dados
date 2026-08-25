@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-int procuraNumero(int vet[], int n, int x){
+int procura_numero(int vet[], int n, int x){
     int cont = 0;
     for(int i = 0; i < n; i++){
         if(vet[i]==x){

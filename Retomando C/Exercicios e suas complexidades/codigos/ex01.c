@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-int verificaAno(int ano){
+int verifica_ano(int ano){
     if(ano < 0) return -1;
     if(ano%400 == 0) return 1;
     if(ano%4 == 0 && ano%100 != 0) return 1;

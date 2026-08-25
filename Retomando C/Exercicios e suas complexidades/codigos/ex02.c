@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-void verificaSeVota(int idade){
+void verifica_se_vota(int idade){
     if((idade < 16 || idade >= 70) && idade > 0){
     	printf("dispensado"); 
     	return;

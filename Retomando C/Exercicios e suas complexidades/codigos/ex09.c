@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-int verificaOrdenacao(int vet[], int n){
+int verifica_ordenacao(int vet[], int n){
     int res,direcao;
     res = 1;
     direcao = 0;

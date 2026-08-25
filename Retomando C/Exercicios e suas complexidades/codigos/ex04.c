@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-void somaSequencia(){
+void soma_sequencia(){
     int n;
     int par=0;
     int impar=0;

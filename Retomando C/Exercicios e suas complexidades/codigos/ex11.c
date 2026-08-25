@@ -17,7 +17,7 @@ int ordena(int vet[], int n){
     }
 }
 
-void ordenacaoSelecao(int *vetor, int n) {
+void ordenacao_selecao(int *vetor, int n) {
     int i, j, aux;
     int indice_menor;
 
@@ -34,16 +34,24 @@ void ordenacaoSelecao(int *vetor, int n) {
     }
 }
 
-void ordenacaoBolha(int *vetor, int n) {
-    int i, j, aux;
-    for (i=n-1; i>=1; i--){
-        for (j=0; j<i; j++){
-             if (vetor[j] > vetor[j + 1]){ 
+void ordenacao_bolha(int *vetor, int n) {
+    int aux, i, j;
+    int troca;
+    for(i = 0; i < n - 1; i++){
+        troca = 0;
+
+        for(j = 0; j < n - 1 - i; j++){
+            if(vetor[j] > vetor[j + 1]){
                 aux = vetor[j];
                 vetor[j] = vetor[j + 1];
                 vetor[j + 1] = aux;
+
+                troca = 1;
             }
         }
+
+        if(troca == 0)
+            break;
     }
 }
 

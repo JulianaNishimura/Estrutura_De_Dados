@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-double numeroHarmonico(int nro){
+double numero_harmonico(int nro){
     if(nro < 0) {
         printf("Número inválido: ");
         return -1;
