@@ -1,5 +1,6 @@
 /*
 Juliana Yumi Nishimura
+Ingrid Ferreira da Silva
 */
 #include <stdio.h>
 #include <stdlib.h>
