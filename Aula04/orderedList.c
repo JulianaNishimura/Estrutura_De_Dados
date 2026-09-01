@@ -3,7 +3,15 @@ Juliana Yumi Nishimura
 Ingrid Ferreira da Silva
 
 Indique o(s) ponto(s) forte(s) e fraco(s) de uma lista ordenada, justificando-os.
+Resposta: Como a lista está ordenada, posso usar a busca binária com O(logN), 
+tendo uma busca eficiente e também posso pegar o menor e maior valor da lista com facilidade.
+Porém como ponto fraco, quando se faz a remoção ou a inserção,
+é necessário deslocar todo o resto do vetor, além de usar o realloc toda vez para aumentar a lista.
+
 Descreva a estratégia utilizada para o aumento de memória quando o usuário deseja inserir mais itens que o alocado previamente
+Resposta: A estratégia utilizada é que se está cheio, chamo uma função para aumentar em aproximadamente 30% do tamanho dela,
+e então faço o realloc com esse novo máximo.
+
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -85,14 +93,19 @@ int index_of(t_ordered_list*list, int element){
 
     while(ini<=fim){
         meio = ini + (fim-ini)/2;
-        if(element==list->itens[meio]) 
-            return meio;
-        if(element>list->itens[meio]) 
+        if(element==list->itens[meio]){
+            if(meio != 0 && list->itens[meio-1] == element){
+                fim = meio - 1;
+            }else {
+                return meio;
+            }
+        }
+        if(element > list->itens[meio]) 
             ini = meio+1;
-        if(element<list->itens[meio]) 
+
+        if(element < list->itens[meio]) 
             fim = meio-1;
     }
-
     return -1;
 }
 
@@ -102,15 +115,17 @@ int search(t_ordered_list*list, int element){
 }
 
 int get(t_ordered_list*list,int index){
-    if(index>=list->n) return -1;
+    if(index>=list->n || index<0) return -1;
     return list->itens[index];
 }
 
 int count(t_ordered_list*list,int element){
     int quantidade = 0;
-    for(int i = 0; i < list->n;i++){
-        if(list->itens[i]==element)
-            quantidade++;
+    int indice = index_of(list, element);
+
+    while(indice != -1 && indice < list->n && list->itens[indice] == element){
+        quantidade++;
+        indice++;
     }
     return quantidade;
 }
@@ -130,10 +145,21 @@ t_ordered_list* merge(t_ordered_list*list1, t_ordered_list*list2){
         }
         x++;
     }
+    while(i < list1->n){
+        result_list->itens[x] = list1->itens[i];
+        i++;
+        x++;
+    }
+    while(j < list2->n){
+        result_list->itens[x] = list2->itens[j];
+        j++;
+        x++;
+    }
+    result_list->n = x;
+    return result_list;
 }
 
 int equals(t_ordered_list*list1, t_ordered_list*list2){
-    int i;
     if(list1->n!=list2->n)
         return 0;
     for(int i = 0; i < list1->n;i++){
@@ -150,6 +176,7 @@ int clear(t_ordered_list*list){
 }
 
 int destroy(t_ordered_list*list){
+    free(list->itens);
     free(list);
     return 1;
 }

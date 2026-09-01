@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra
 all: 
 
 TAD_Ordered_List: main.o orderedList.o
-	$(CC) $(CFLAGS) -o TAD_Ordered_List main.o funcoes.o
+	$(CC) $(CFLAGS) -o TAD_Ordered_List main.o orderedList.o
 
 main.o: main.c orderedList.h
 	$(CC) $(CFLAGS) -c -o main.o main.c
