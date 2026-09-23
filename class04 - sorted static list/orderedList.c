@@ -12,6 +12,19 @@ Descreva a estratégia utilizada para o aumento de memória quando o usuário de
 Resposta: A estratégia utilizada é que se está cheio, chamo uma função para aumentar em aproximadamente 30% do tamanho dela,
 e então faço o realloc com esse novo máximo.
 
+Advantages
+    Extremely efficient search: Keeping the elements sorted allows the use of algorithms such as Binary Search, 
+    reducing the search time to O(log n) instead of O(n).
+
+Disadvantages
+    Complex insertion: Inserting an element is inefficient because it requires finding the correct position and shifting 
+    multiple elements to make room.
+    Positioning restriction: Operations such as inserting at the last position or at a user-specified index do not make sense, 
+    since the position is strictly determined by the key value.
+    Fixed size: Maintains the limitation of static memory allocation.
+
+When to use
+    When the application performs frequent search/query operations and relatively few insertion or removal operations.
 */
 #include <stdio.h>
 #include <stdlib.h>
