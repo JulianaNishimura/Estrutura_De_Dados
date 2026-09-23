@@ -43,21 +43,22 @@ int in(t_queue *queue, int x){
     return 1;
 }
 
-int out(t_queue *queue, int*){
+int out(t_queue *queue, int *x){
     if(is_empty(queue)) return 0;
+    *x = peek(queue);
     queue->begin++;
     return 1;
 }
 
 int peek(t_queue *queue){
-    if (isEmpty(queue)) return -1;
+    if (is_empty(queue)) return -1;
     return queue->items[queue->begin + 1];
 }
 
 void printQueue(t_queue *queue){
-    if (isEmpty(queue)) return;
+    if (is_empty(queue)) return;
 
-    printf("Queue: ");
+    printf("\nQueue: ");
     for (int i = queue->begin + 1; i < queue->end; i++){
         printf("%d ", queue->items[i]);
     }
