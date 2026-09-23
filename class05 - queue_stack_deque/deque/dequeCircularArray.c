@@ -102,34 +102,34 @@ void printDeque(Deque* deque) {
     printf("\n");
 }
 
-void freeDeque(Deque* deque) {
+void destroyDeque(Deque* deque) {
     if (deque != NULL) {
         free(deque);
     }
 }
 
 int main() {
-    Deque* myDeque = createDeque();
+    Deque* deque = createDeque();
 
-    insertLast(myDeque, 10);
-    insertLast(myDeque, 20);
-    insertFirst(myDeque, 5);
-    insertFirst(myDeque, 1);
-    insertLast(myDeque, 30);
-    printDeque(myDeque);
+    insertLast(deque, 10);
+    insertLast(deque, 20);
+    insertFirst(deque, 5);
+    insertFirst(deque, 1);
+    insertLast(deque, 30);
+    printDeque(deque);
 
-    if (!insertLast(myDeque, 99)) {
+    if (!insertLast(deque, 99)) {
         printf("Push failed: Deque full\n");
     }
 
     int removedItem;
-    if (removeFirst(myDeque, &removedItem)) printf("Pop front: %d\n", removedItem);
-    if (removeLast(myDeque, &removedItem))  printf("Pop back: %d\n", removedItem);
-    printDeque(myDeque);
+    if (removeFirst(deque, &removedItem)) printf("Pop front: %d\n", removedItem);
+    if (removeLast(deque, &removedItem))  printf("Pop back: %d\n", removedItem);
+    printDeque(deque);
 
-    if (insertLast(myDeque, 40)) printf("Push back: 40\n");
-    printDeque(myDeque);
+    if (insertLast(deque, 40)) printf("Push back: 40\n");
+    printDeque(deque);
 
-    freeDeque(myDeque);
+    destroyDeque(deque);
     return 0;
 }

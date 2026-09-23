@@ -17,14 +17,14 @@ typedef struct Deque {
     int size;
 } Deque;
 
-Node* createNode(int value);
+Node* createNode(int);
 Deque* createDeque();
-int isEmpty(Deque* dq);
-int insertFirst(Deque* dq, int value); 
-int insertLast(Deque* dq, int value);  
-int removeFirst(Deque* dq, int *value);             
-int removeLast(Deque* dq, int *value);              
-void printDeque(Deque* dq);             
-void destroyDeque(Deque* dq);
+int isEmpty(Deque*);
+int insertFirst(Deque*, int); 
+int insertLast(Deque*, int);  
+int removeFirst(Deque*, int*);             
+int removeLast(Deque*, int*);              
+void printDeque(Deque*);             
+void destroyDeque(Deque*);
 
 #endif 
